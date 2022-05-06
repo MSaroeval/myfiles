@@ -3,7 +3,7 @@
 
 
 ### IWR (Invoke-Web Request)
-First exploit the Victim machine using netcat
+First exploit the victim machine, use Netcat to receive the incoming connection
 ```
 nc -lvp 4444
 ```
